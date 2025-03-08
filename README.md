@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
-![walkthrough gif](red-devils-quiz.gif)
+![walkthrough gif](public/red-devils-quiz.gif)
 
 ## Notes
 
