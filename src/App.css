@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.3s ease;
+  --manutd-red: #DA291C;
+  --manutd-black: #000000;
+  --manutd-white: #FFFFFF;
+  --gradient-start: #DA291C;
+  --gradient-end: #000000;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  overflow-x: hidden;
+  color: var(--manutd-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(218, 41, 28, 0.5);
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--manutd-white); 
+  font-weight: 900;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.9); 
+  animation: fadeIn 1s ease-in-out;
+  letter-spacing: 2px; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+p {
+  color: var(--manutd-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+}
+
+.start-screen {
+  background: url('/trio.png') no-repeat center center, linear-gradient(135deg, rgba(218, 41, 28, 0.8), rgba(0, 0, 0, 0.8));
+  background-size: cover;
+  border: 4px solid var(--manutd-white);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  transition: transform 0.3s ease;
+}
+
+.start-screen:hover {
+  transform: scale(1.02);
+}
+
+.start-button {
+  border-radius: 12px;
+  border: 3px solid var(--manutd-white);
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--manutd-red), #b52417);
+  color: var(--manutd-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover {
+  background: linear-gradient(45deg, #b52417, var(--manutd-red));
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--manutd-red), #800000);
+  background-size: cover;
+  border-radius: 20px;
+  border: 4px solid var(--manutd-white);
+  transition: transform 0.6s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--manutd-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card.flipped .card-content {
+  transform: rotateY(180deg);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.nav-button {
+  background: linear-gradient(45deg, var(--manutd-red), #800000);
+  border: 2px solid var(--manutd-white);
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  color: var(--manutd-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 1rem;
+}
+
+.nav-button:hover {
+  background: linear-gradient(45deg, #b52417, var(--manutd-red));
+  transform: scale(1.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+  background: linear-gradient(45deg, #800000, var(--manutd-red));
+  border: 2px solid var(--manutd-white);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  color: var(--manutd-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.back-button:hover {
+  background: linear-gradient(45deg, var(--manutd-red), #b52417);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.progress {
+  color: var(--manutd-white);
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .card, .start-screen {
+    height: 400px;
+    max-width: 600px;
+  }
+  .start-button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .card, .start-screen {
+    height: 300px;
+    max-width: 400px;
+  }
+  .start-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+  }
+  .nav-button {
+    padding: 0.75rem 1rem;
+    font-size: 1.2rem;
+  }
+  .progress {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .card, .start-screen {
+    height: 200px;
+    max-width: 300px;
+  }
+  .start-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .nav-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+  }
+  .back-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .progress {
+    font-size: 0.9rem;
+  }
+}
+
+@layer utilities {
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+.read-the-docs {
+  color: var(--manutd-white);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.read-the-docs:hover {
+  opacity: 1;
+}
