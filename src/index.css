@@ -21,7 +21,7 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: #f5f5f5 url('/garnacho.png') no-repeat center center;
+  background: #f5f5f5 url('/photos/ag17-bgrnd.png') no-repeat center center;
   background-size: cover;
   overflow-x: hidden;
 }
@@ -146,7 +146,7 @@ button:focus-visible {
     color: #333;
   }
   body {
-    background: #f5f5f5 url('/garnacho.png') no-repeat center center;
+    background: #f5f5f5 url('/photos/tuff.png') no-repeat center center;
     background-size: cover;
   }
   a:hover {
