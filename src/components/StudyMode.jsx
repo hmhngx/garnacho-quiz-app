@@ -12,7 +12,7 @@ function StudyMode({ flashcards, setCurrentStreak, setLongestStreak, currentStre
   const [showAnswer, setShowAnswer] = useState(false);
   const [userGuess, setUserGuess] = useState('');
   const [feedback, setFeedback] = useState(null);
-  const [error, setError] = useState(''); 
+  const [error, setError] = useState('');
 
   const nextCard = () => {
     setShowAnswer(false);
