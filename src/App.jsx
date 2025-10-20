@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     setFlashcards(initialCards);
-  }, []);
+  });
 
   const totalQuestions = initialCards.length;
 
@@ -48,11 +48,11 @@ function App() {
   };
 
   return (
-    <div>
-      <h1 className="text-4xl font-bold md:text-5xl mb-2">Garnacho Quiz Challenge</h1>
-      <p className="text-lg mb-4">Test your knowledge of Alejandro Garnacho!</p>
-      <p className="text-sm mb-4">Number of cards: {totalQuestions}</p>
-      <p className="text-sm mb-4">Current Streak: {currentStreak} | Longest Streak: {longestStreak}</p>
+    <div className="neon-app-container">
+      <h1 className="text-4xl font-bold md:text-5xl mb-2 neon-title">Garnacho Quiz Challenge</h1>
+      <p className="text-lg mb-4 neon-subtitle">Test your knowledge of Alejandro Garnacho!</p>
+      <p className="text-sm mb-4 neon-info">Number of cards: {totalQuestions}</p>
+      <p className="text-sm mb-4 neon-info">Current Streak: {currentStreak} | Longest Streak: {longestStreak}</p>
       {mode === 'start' ? (
         <div className="start-screen">
           <button onClick={() => setMode('study')} className="start-button">
@@ -65,7 +65,7 @@ function App() {
           {flashcards.length > 0 && (
             <button
               onClick={() => setMode('study')}
-              className="mt-6 px-6 py-3 rounded-xl transition-all back-button"
+              className="neon-button mt-8 px-10 py-5 rounded-xl transition-all back-button text-xl"
             >
               Start Quiz
             </button>
@@ -84,16 +84,16 @@ function App() {
           />
           <button
             onClick={handleStartOver}
-            className="mt-6 px-6 py-3 rounded-xl transition-all back-button"
+            className="neon-button mt-8 px-10 py-5 rounded-xl transition-all back-button text-xl"
           >
             Start Over
           </button>
           {masteredCards.length > 0 && (
-            <div className="mt-6">
-              <h2 className="text-xl font-bold">Mastered Cards</h2>
-              <ul className="text-left">
+            <div className="mt-6 neon-mastered-section">
+              <h2 className="text-xl font-bold neon-mastered-title">Mastered Cards</h2>
+              <ul className="text-left neon-mastered-list">
                 {masteredCards.map(card => (
-                  <li key={card.id} className="text-white">
+                  <li key={card.id} className="text-white neon-mastered-item">
                     {card.term}: {card.definition}
                   </li>
                 ))}
@@ -102,7 +102,7 @@ function App() {
           )}
         </>
       )}
-      <p className="read-the-docs">Viva Garnacho!</p>
+      <p className="read-the-docs neon-signature">Viva Garnacho!</p>
     </div>
   );
 }
