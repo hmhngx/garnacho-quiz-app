@@ -1,17 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Destroy+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: system-ui, 'Avenir', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Oswald', 'Anton', 'Playfair Display', 'Destroy Sans', system-ui, 'Avenir', 'Helvetica', 'Arial', sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 700;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
+  --neon-red: #ff0040;
+  --neon-blue: #00ffff;
+  --neon-green: #00ff41;
+  --neon-purple: #bf00ff;
+  --neon-yellow: #ffff00;
 }
 
 body {
@@ -23,7 +30,23 @@ body {
   min-height: 100vh;
   background: #f5f5f5 url('/photos/ag17-bgrnd.png') no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(191, 0, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 #root {
@@ -74,6 +97,7 @@ a:hover {
 }
 
 h1 {
+  font-family: 'Anton', 'Oswald', sans-serif;
   font-size: 2.5rem;
   line-height: 1.1;
   margin-bottom: 1.5rem;
@@ -82,21 +106,46 @@ h1 {
 }
 
 button {
+  font-family: 'Anton', 'Oswald', sans-serif;
   border-radius: 12px;
   border: 2px solid transparent;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  font-weight: 600;
-  font-family: inherit;
-  background: #333;
+  font-weight: 700;
+  background: linear-gradient(45deg, #333, #555);
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(255, 0, 64, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
 }
 
 button:hover {
-  background: #555;
-  transform: translateY(-2px);
+  background: linear-gradient(45deg, #555, #777);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(255, 0, 64, 0.5),
+              0 0 40px rgba(0, 255, 255, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8),
+               0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:focus,
