@@ -17,38 +17,37 @@ function FlashcardForm({ addFlashcard }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg mb-8 flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="w-full max-w-2xl mb-8 flex flex-col gap-6 neon-form">
       <input
         type="text"
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         placeholder="Player Name"
-        className="p-3 rounded-lg bg-white text-black border border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all"
+        className="neon-input w-full rounded-lg bg-white text-black border-2 border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all hover:shadow-neon-red focus:shadow-neon-red"
       />
       <input
         type="text"
         value={definition}
         onChange={(e) => setDefinition(e.target.value)}
         placeholder="Key Fact or Stat"
-        className="p-3 rounded-lg bg-white text-black border border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all"
+        className="neon-input w-full rounded-lg bg-white text-black border-2 border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all hover:shadow-neon-red focus:shadow-neon-red"
       />
       <input
         type="text"
         value={image}
         onChange={(e) => setImage(e.target.value)}
         placeholder="Player Image URL (optional)"
-        className="p-3 rounded-lg bg-white text-black border border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all"
+        className="neon-input w-full rounded-lg bg-white text-black border-2 border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all hover:shadow-neon-red focus:shadow-neon-red"
       />
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="p-3 rounded-lg bg-white text-black border border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all"
+        className="neon-input w-full rounded-lg bg-white text-black border-2 border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all hover:shadow-neon-red focus:shadow-neon-red"
       >
-        <option value="
-        ">Legend</option>
+        <option value="legend">Legend</option>
         <option value="modern">Modern Star</option>
       </select>
-      <button type="submit">Add Player</button>
+      <button type="submit" className="neon-button px-8 py-4 bg-gradient-to-r from-[#DA291C] to-[#b52417] text-white rounded-lg font-semibold hover:from-[#b52417] hover:to-[#DA291C] transition-all duration-300 hover:scale-105 hover:shadow-neon-red text-lg">Add Player</button>
     </form>
   );
 }
