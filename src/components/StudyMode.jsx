@@ -80,68 +80,85 @@ function StudyMode({ flashcards, setCurrentStreak, setLongestStreak, currentStre
   const displayIndex = currentIndex + 1;
 
   return (
-    <div className="w-full max-w-lg text-center">
-      <div className="relative">
-        <div
-          className={`card ${currentCard.category ? `category-${currentCard.category}` : 'category-easy'} mb-6 cursor-pointer transform-style-3d transition-transform duration-500 ${showAnswer ? 'flipped' : ''}`}
-          style={{ transform: showAnswer ? 'rotateX(180deg)' : 'rotateX(0deg)' }}
-          onClick={() => !showAnswer && setShowAnswer(true)}
-        >
-          <div className="absolute inset-0 flex items-center justify-center backface-hidden">
-            <div className="card-content">
-              {showAnswer ? (
-                <div className="flex flex-col items-center">
-                  <p>{currentCard.definition}</p>
-                  {feedback === 'correct' && <p className="text-green-400 mt-2">Correct!</p>}
-                  {feedback === 'incorrect' && <p className="text-red-400 mt-2">Incorrect!</p>}
-                  <button
-                    onClick={handleMastered}
-                    className="mt-4 px-4 py-2 bg-green-600 rounded-lg text-white hover:bg-green-700 transition"
-                  >
-                    Mark as Mastered
-                  </button>
-                </div>
-              ) : (
-                <p>{currentCard.term}</p>
-              )}
+    <div className="w-full max-w-4xl text-center">
+      <div className="relative flex items-center justify-center">
+        {/* Flashcard */}
+        <div className="relative">
+          <div
+            className={`card ${currentCard.category ? `category-${currentCard.category}` : 'category-easy'} mb-6 cursor-pointer transform-style-3d transition-transform duration-500 ${showAnswer ? 'flipped' : ''}`}
+            style={{ transform: showAnswer ? 'rotateX(180deg)' : 'rotateX(0deg)' }}
+            onClick={() => !showAnswer && setShowAnswer(true)}
+          >
+            <div className="absolute inset-0 flex items-center justify-center backface-hidden">
+              <div className="card-content">
+                {showAnswer ? (
+                  <div className="flex flex-col items-center">
+                    <p className="text-2xl">{currentCard.definition}</p>
+                    {feedback === 'correct' && <p className="text-green-400 mt-4 text-xl">Correct!</p>}
+                    {feedback === 'incorrect' && <p className="text-red-400 mt-4 text-xl">Incorrect!</p>}
+                    <button
+                      onClick={handleMastered}
+                      className="neon-button mt-6 px-8 py-4 bg-green-600 rounded-lg text-white hover:bg-green-700 transition-all duration-300 hover:scale-105 hover:shadow-neon-green text-lg"
+                    >
+                      Mark as Mastered
+                    </button>
+                  </div>
+                ) : (
+                  <p className="text-2xl">{currentCard.term}</p>
+                )}
+              </div>
             </div>
           </div>
+          
+          {/* Left Navigation Button - positioned in the left green area */}
+          <button 
+            onClick={prevCard} 
+            className="nav-button text-lg px-4 py-3 z-10 absolute -left-20 top-1/2 -translate-y-1/2"
+          >
+            ←
+          </button>
+          
+          {/* Right Navigation Button - positioned in the right green area */}
+          <button 
+            onClick={nextCard} 
+            className="nav-button text-lg px-4 py-3 z-10 absolute -right-20 top-1/2 -translate-y-1/2"
+          >
+            →
+          </button>
         </div>
       </div>
-      <div className="guess-section mb-4 flex justify-center items-center space-x-2">
-        <label className="text-white">Guess the answer here:</label>
-        <input
-          type="text"
-          value={userGuess}
-          onChange={(e) => {
-            setUserGuess(e.target.value);
-            setError(''); 
-          }}
-          placeholder="Place your answer here"
-          className="p-2 rounded-lg bg-white text-black border border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all"
-          disabled={showAnswer}
-        />
-        <button
-          onClick={handleSubmit}
-          className="px-4 py-2 bg-[#DA291C] text-white rounded-lg hover:bg-[#b52417] transition"
-          disabled={showAnswer}
-        >
-          Guess
-        </button>
+      <div className="guess-section mt-8 flex flex-col justify-center items-center gap-6">
+        <label className="text-white text-base font-bold neon-subtitle">Guess the answer here:</label>
+        <div className="flex flex-col md:flex-row gap-3 items-center">
+          <input
+            type="text"
+            value={userGuess}
+            onChange={(e) => {
+              setUserGuess(e.target.value);
+              setError(''); 
+            }}
+            placeholder="Place your answer here"
+            className="neon-input w-64 md:w-72 px-4 py-3 rounded-xl bg-white text-black border-2 border-[#DA291C] focus:outline-none focus:ring-2 focus:ring-[#DA291C] transition-all hover:shadow-neon-red focus:shadow-neon-red"
+            disabled={showAnswer}
+          />
+          <button
+            onClick={handleSubmit}
+            className="neon-button px-6 py-3 bg-[#DA291C] text-white rounded-lg hover:bg-[#b52417] transition-all duration-300 hover:scale-105 hover:shadow-neon-red text-base"
+            disabled={showAnswer}
+          >
+            Guess
+          </button>
+        </div>
       </div>
       {error && <p className="text-red-400 mb-4">{error}</p>} {/* Display error message */}
-      <div className="flex justify-between items-center mt-4">
-        <button onClick={prevCard} className="nav-button">←</button>
-        <button onClick={nextCard} className="nav-button">→</button>
-      </div>
       <button
         onClick={shuffleCards}
-        className="mt-4 px-4 py-2 bg-[#DA291C] text-white rounded-lg hover:bg-[#b52417] transition"
+        className="neon-button mt-4 px-6 py-3 bg-[#DA291C] text-white rounded-lg hover:bg-[#b52417] transition-all duration-300 hover:scale-105 hover:shadow-neon-red text-base"
       >
         Shuffle Cards
       </button>
-      <p className="progress">
-        Player {displayIndex} of {flashcards.length}
+      <p className="progress text-sm mt-2">
+        Question {displayIndex} of {flashcards.length}
       </p>
     </div>
   );
